@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML 5 doument</title>
+<style type="text/css">
+body{
+ display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+ background:linear-gradient(to right,rgb(162, 126, 167),rgb(102, 68, 99));
+}
+form{
+font-family: 'Courier New', Courier, monospace;
+width:23rem;
+height: 30rem;
+background:linear-gradient(to right,rgb(162, 126, 167),rgb(102, 68, 99));
+border-radius: 10px;
+color: aliceblue;
+}
+label{
+padding:2rem;
+font-size: 1.5rem;
+padding-left:1rem;
+}
+input{
+margin:10px;
+margin-left: 20%;
+height:2rem;
+width: 13rem;
+border: 1px black solid;
+border-radius: 10px;
+font-size:large;
+padding-left: 5px;
+}
+input::placeholder{
+padding-left:10px;
+}
+.button-con{
+ margin-top: 20px;
+ text-align:center; 
+}
+button{
+font-size: 1.75rem;
+ font-family: 'Courier New', Courier, monospace;
+cursor: pointer;
+border-radius: 10px;
+background-color: rgb(179, 174, 174);
+}
+button:hover{
+font-size: 2rem;
+background-color: white;
+}
+</style>
+<script>
+onload=()=>{
+const show=document.getElementById("show");
+const id=document.getElementById("ID");
+const email=document.getElementById("Email");
+const name=document.getElementById("name");
+const birth=document.getElementById("Birth");
+show.addEventListener('click',function(event){
+ event.preventDefault();
+ fetch("user.json").then(data=>data.json()).then(data=>{
+  const user=data.user;
+  id.value=user.id;
+  email.value=user.email;
+  name.value=user.name;
+  birth.value=user.birthday
+ });
+});
+
+}
+</script>  
+</head>
+<body>
+    <form>
+   <div>
+   <label for="Email">ID:</label>
+   <br>
+    <input type="text" id="ID" placeholder="ID" readonly>
+  </div>
+   <div>
+   <label for="Email">Email: </label>
+  <br>
+    <input type="text" id="Email" placeholder="Email" readonly>
+  </div>
+  <div>
+   <label for="name">Name: </label>
+    <br>
+    <input type="text" id="name" placeholder="Name" readonly>
+  </div>
+   <div>
+   <label for="name">Birthday: </label>
+   <br>
+    <input type="text" id="Birth" placeholder="Birthday" readonly>
+  </div>
+    <div class="button-con"><button id="show" onclick="hi(event)">Show User</button></div>
+  </form>
+</body>      
+</html> 
